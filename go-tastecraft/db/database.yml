@@ -1,0 +1,7 @@
+development:
+  dialect: mysql
+  database: tastecraft
+  user: 
+  password: 
+  host: 
+  pool: 5
