@@ -20,5 +20,7 @@ func (app *application) routes() http.Handler {
 		MaxAge:           12 * time.Hour,
 	}))
 
+	router.GET("/recipes/:id", app.getRecipeByID)
+
 	return router
 }
