@@ -37,7 +37,7 @@ CREATE TABLE ingredients (
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT food_ingredient_id
-    FOREIGN KEY (recipe_id)
+    FOREIGN KEY (food_id)
     REFERENCES foods (food_id)
     ON DELETE CASCADE
     ON UPDATE CASCADE
