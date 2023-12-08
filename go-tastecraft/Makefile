@@ -1,4 +1,4 @@
-CONNECTION_STRING=
+CONNECTION_STRING=""
 
 ## build: builds all binaries
 build: clean build_back
@@ -23,7 +23,7 @@ start: start_back
 ## start_back: starts the back end
 start_back: build_back
 	@echo Starting the back end...
-	set DSN=${CONNECTION_STRING} && start /B .\dist\go_tastecraft_api.exe
+	set CONNECTION_STRING=${CONNECTION_STRING} && start /B .\dist\go_tastecraft_api.exe
 	@echo Back end running!
 
 ## stop: stops the front and back end

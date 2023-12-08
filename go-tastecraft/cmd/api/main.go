@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 	"tastecraft/db/driver"
-	"tastecraft/internal/models"
+	"tastecraft/db/models"
 	"time"
 )
 
@@ -17,7 +17,7 @@ type config struct {
 	port int
 	env  string
 	db   struct {
-		dsn string
+		connectionString string
 	}
 }
 
@@ -30,18 +30,22 @@ type application struct {
 }
 
 func main() {
+	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
+	errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
+
 	var cfg config
 	flag.IntVar(&cfg.port, "port", 8080, "Server port to listen on")
 	flag.StringVar(&cfg.env, "env", "development", "Application environment {development|production|maintenance}")
 
 	flag.Parse()
 
-	cfg.db.dsn = os.Getenv("CONNECTION_STRING")
+	connectionString := os.Getenv("CONNECTION_STRING")
+	if len(connectionString) > 1 {
+		connectionString = connectionString[1 : len(connectionString)-2]
+	}
 
-	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
-	errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
-
-	conn, err := driver.OpenDB(cfg.db.dsn)
+	cfg.db.connectionString = connectionString
+	conn, err := driver.OpenDB(cfg.db.connectionString)
 	if err != nil {
 		errorLog.Fatal(err)
 	}
