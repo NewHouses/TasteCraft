@@ -1,7 +1,7 @@
 development:
   dialect: mysql
-  database: tastecraft
-  user: 
-  password: 
-  host: 
+  database: tastecraft_test
+  user: test
+  password: secret
+  host: 127.0.0.1
   pool: 5
