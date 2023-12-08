@@ -7,7 +7,7 @@ import (
 type Recipe struct {
 	ID          int           `json:"id"`
 	Name        string        `json:"name"`
-	DishType    string        `json:"dish-type"`
+	DishType    vo.DishType   `json:"dish-type"`
 	Ingredients []*Ingredient `json:"ingredients"`
 	Steps       []string      `json:"steps"`
 	Properties  vo.Properties `json:"properties"`
