@@ -5,12 +5,12 @@ import (
 )
 
 type Recipe struct {
-	ID          int           `json:"id"`
-	Name        string        `json:"name"`
-	DishType    vo.DishType   `json:"dish-type"`
-	Ingredients []*Ingredient `json:"ingredients"`
-	Steps       []string      `json:"steps"`
-	Properties  vo.Properties `json:"properties"`
+	ID                int                  `json:"id"`
+	Name              string               `json:"name"`
+	DishType          vo.DishType          `json:"dish-type"`
+	Ingredients       []*Ingredient        `json:"ingredients"`
+	Steps             []string             `json:"steps"`
+	NutritionalValues vo.NutritionalValues `json:"nutritional_values"`
 }
 
 type Ingredient struct {

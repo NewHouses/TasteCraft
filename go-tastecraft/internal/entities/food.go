@@ -5,7 +5,7 @@ import (
 )
 
 type Food struct {
-	ID         int           `json:"id"`
-	Name       string        `json:"name"`
-	Properties vo.Properties `json:"properties"`
+	ID                int                  `json:"id"`
+	Name              string               `json:"name"`
+	NutritionalValues vo.NutritionalValues `json:"nutrional_values"`
 }

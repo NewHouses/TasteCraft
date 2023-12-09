@@ -50,7 +50,7 @@ func (m *DBModel) InsertFood(food *e.Food) error {
 		return err
 	}
 
-	err = m.InsertProperties(food.ID, &food.Properties)
+	err = m.InsertNutritionalValues(food.ID, &food.NutritionalValues)
 
 	return err
 }

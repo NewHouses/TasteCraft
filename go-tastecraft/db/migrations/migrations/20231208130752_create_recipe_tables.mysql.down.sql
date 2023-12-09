@@ -1,5 +1,5 @@
 DROP TABLE steps;
-DROP TABLE properties;
+DROP TABLE nutritional_values;
 DROP TABLE ingredients;
 DROP TABLE foods;
 DROP TABLE recipes;

@@ -53,7 +53,7 @@ func assumeRecipeInDatabase() e.Recipe {
 		Food: e.Food{
 			ID:   1,
 			Name: "food test 1",
-			Properties: vo.Properties{
+			NutritionalValues: vo.NutritionalValues{
 				Kilocalories:  2222,
 				Proteins:      20,
 				Carbohydrates: 50,
@@ -68,7 +68,7 @@ func assumeRecipeInDatabase() e.Recipe {
 		Food: e.Food{
 			ID:   2,
 			Name: "food test 2",
-			Properties: vo.Properties{
+			NutritionalValues: vo.NutritionalValues{
 				Kilocalories:  132,
 				Proteins:      85,
 				Carbohydrates: 30,
@@ -101,7 +101,7 @@ func assertRecipe(t *testing.T, actualRecipe, expectedRecipe e.Recipe) {
 	for i, actualIngredient := range actualRecipe.Ingredients {
 		assert.Equal(t, actualIngredient.Food.ID, expectedRecipe.Ingredients[i].Food.ID, "The two Food IDs should be the same.")
 		assert.Equal(t, actualIngredient.Food.Name, expectedRecipe.Ingredients[i].Food.Name, "The two Food Names should be the same.")
-		assert.Equal(t, actualIngredient.Food.Properties, expectedRecipe.Ingredients[i].Food.Properties, "The two Food Properties should be the same.")
+		assert.Equal(t, actualIngredient.Food.NutritionalValues, expectedRecipe.Ingredients[i].Food.NutritionalValues, "The two Food Nutritional Values should be the same.")
 		assert.Equal(t, actualIngredient.Quantity, expectedRecipe.Ingredients[i].Quantity, "The two Ingredient Quantities should be the same.")
 		assert.Equal(t, actualIngredient.Measurement, expectedRecipe.Ingredients[i].Measurement, "The two Ingredient Measurements should be the same.")
 	}

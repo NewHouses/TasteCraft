@@ -39,7 +39,8 @@ DROP TABLE IF EXISTS `foods`;
 CREATE TABLE `foods` (
   `food_id` int(11) NOT NULL AUTO_INCREMENT,
   `food_name` varchar(45) NOT NULL DEFAULT '',
-  PRIMARY KEY (`food_id`)
+  PRIMARY KEY (`food_id`),
+  UNIQUE KEY `food_name` (`food_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -65,37 +66,37 @@ CREATE TABLE `ingredients` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `properties`
+-- Table structure for table `nutrional_values`
 --
 
-DROP TABLE IF EXISTS `properties`;
+DROP TABLE IF EXISTS `nutrional_values`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `properties` (
+CREATE TABLE `nutrional_values` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `food_id` int(11) NOT NULL,
   `kilocalories` int(10) unsigned NOT NULL DEFAULT 0,
-  `proteins` int(10) unsigned NOT NULL DEFAULT 0,
-  `carbohydrates` int(10) unsigned NOT NULL DEFAULT 0,
-  `fat` int(10) unsigned NOT NULL DEFAULT 0,
-  `fiber` int(10) unsigned NOT NULL DEFAULT 0,
-  `calcium` int(10) unsigned NOT NULL DEFAULT 0,
-  `iron` int(10) unsigned NOT NULL DEFAULT 0,
-  `zinc` int(10) unsigned NOT NULL DEFAULT 0,
-  `vitamin_a` int(10) unsigned NOT NULL DEFAULT 0,
-  `vitamin_b` int(10) unsigned NOT NULL DEFAULT 0,
-  `vitamin_b1` int(10) unsigned NOT NULL DEFAULT 0,
-  `vitamin_b2` int(10) unsigned NOT NULL DEFAULT 0,
-  `vitamin_b3` int(10) unsigned NOT NULL DEFAULT 0,
-  `vitamin_b6` int(10) unsigned NOT NULL DEFAULT 0,
-  `vitamin_b12` int(10) unsigned NOT NULL DEFAULT 0,
-  `vitamin_c` int(10) unsigned NOT NULL DEFAULT 0,
-  `vitamin_d` int(10) unsigned NOT NULL DEFAULT 0,
-  `vitamin_e` int(10) unsigned NOT NULL DEFAULT 0,
-  `vitamin_k` int(10) unsigned NOT NULL DEFAULT 0,
+  `proteins` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `carbohydrates` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `fat` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `fiber` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `calcium` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `iron` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `zinc` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `vitamin_a` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `vitamin_b` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `vitamin_b1` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `vitamin_b2` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `vitamin_b3` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `vitamin_b6` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `vitamin_b12` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `vitamin_c` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `vitamin_d` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `vitamin_e` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `vitamin_k` decimal(10,0) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `food_id_idx` (`food_id`),
-  CONSTRAINT `food_property_id` FOREIGN KEY (`food_id`) REFERENCES `foods` (`food_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `food_nutrional_value_id` FOREIGN KEY (`food_id`) REFERENCES `foods` (`food_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -111,6 +112,7 @@ CREATE TABLE `recipes` (
   `recipe_name` varchar(45) NOT NULL,
   `dish_type` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`recipe_id`),
+  UNIQUE KEY `recipe_name` (`recipe_name`),
   KEY `dish_type_recipe_id_idx` (`dish_type`),
   CONSTRAINT `dish_type_recipe_id` FOREIGN KEY (`dish_type`) REFERENCES `dish_types` (`dish_type_id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -156,4 +158,4 @@ CREATE TABLE `steps` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-08 21:43:51
+-- Dump completed on 2023-12-09 17:40:05
