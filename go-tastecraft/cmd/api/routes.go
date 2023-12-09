@@ -21,6 +21,7 @@ func (app *application) routes() http.Handler {
 	}))
 
 	router.GET("/recipes/:id", app.getRecipeByID)
+	router.POST("/food/", app.addFood)
 
 	return router
 }
