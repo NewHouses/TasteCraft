@@ -79,7 +79,7 @@ func (m *DBModel) RecipeIngredients(recipeID int) ([]*e.Ingredient, error) {
 		INNER JOIN
 			foods f ON i.food_id = f.food_id
 		INNER JOIN
-			nutrional_values nv ON nv.food_id = f.food_id
+			nutritional_values nv ON nv.food_id = f.food_id
 		WHERE
 			i.recipe_id = ?;
 	`

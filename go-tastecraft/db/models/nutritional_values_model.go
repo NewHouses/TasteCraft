@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func (m *DBModel) InsertNutritionalValues(foodID int, nutrionalValues *vo.NutritionalValues) error {
+func (m *DBModel) InsertNutritionalValues(foodID int, nutritionalValues *vo.NutritionalValues) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
 
@@ -19,25 +19,25 @@ func (m *DBModel) InsertNutritionalValues(foodID int, nutrionalValues *vo.Nutrit
 
 	_, err := m.DB.ExecContext(ctx, stmt,
 		foodID,
-		nutrionalValues.Kilocalories,
-		nutrionalValues.Proteins,
-		nutrionalValues.Carbohydrates,
-		nutrionalValues.Fat,
-		nutrionalValues.Fiber,
-		nutrionalValues.Calcium,
-		nutrionalValues.Iron,
-		nutrionalValues.Zinc,
-		nutrionalValues.VitaminA,
-		nutrionalValues.VitaminB,
-		nutrionalValues.VitaminB1,
-		nutrionalValues.VitaminB2,
-		nutrionalValues.VitaminB3,
-		nutrionalValues.VitaminB6,
-		nutrionalValues.VitaminB12,
-		nutrionalValues.VitaminC,
-		nutrionalValues.VitaminD,
-		nutrionalValues.VitaminE,
-		nutrionalValues.VitaminK)
+		nutritionalValues.Kilocalories,
+		nutritionalValues.Proteins,
+		nutritionalValues.Carbohydrates,
+		nutritionalValues.Fat,
+		nutritionalValues.Fiber,
+		nutritionalValues.Calcium,
+		nutritionalValues.Iron,
+		nutritionalValues.Zinc,
+		nutritionalValues.VitaminA,
+		nutritionalValues.VitaminB,
+		nutritionalValues.VitaminB1,
+		nutritionalValues.VitaminB2,
+		nutritionalValues.VitaminB3,
+		nutritionalValues.VitaminB6,
+		nutritionalValues.VitaminB12,
+		nutritionalValues.VitaminC,
+		nutritionalValues.VitaminD,
+		nutritionalValues.VitaminE,
+		nutritionalValues.VitaminK)
 
 	return err
 }

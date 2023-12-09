@@ -36,7 +36,7 @@ func (m *DBModel) CleanDB() error {
 	}
 
 	stmt = `
-	TRUNCATE properties;
+	TRUNCATE nutritional_values;
 	`
 	_, err = m.DB.Exec(stmt)
 	if err != nil {

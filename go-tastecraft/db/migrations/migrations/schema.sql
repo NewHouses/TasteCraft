@@ -1,6 +1,6 @@
 -- MariaDB dump 10.19-11.3.0-MariaDB, for Win64 (AMD64)
 --
--- Host: 127.0.0.1    Database: tastecraft_test
+-- Host: 127.0.0.1    Database: tastecraft
 -- ------------------------------------------------------
 -- Server version	11.3.0-MariaDB
 
@@ -26,7 +26,7 @@ CREATE TABLE `dish_types` (
   `dish_type_id` int(11) NOT NULL AUTO_INCREMENT,
   `dish_type` varchar(45) NOT NULL,
   PRIMARY KEY (`dish_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `foods` (
   `food_name` varchar(45) NOT NULL DEFAULT '',
   PRIMARY KEY (`food_id`),
   UNIQUE KEY `food_name` (`food_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,42 +62,42 @@ CREATE TABLE `ingredients` (
   KEY `food_ingredient_id` (`food_id`),
   CONSTRAINT `food_ingredient_id` FOREIGN KEY (`food_id`) REFERENCES `foods` (`food_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `recipe_ingredient_id` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `nutrional_values`
+-- Table structure for table `nutritional_values`
 --
 
-DROP TABLE IF EXISTS `nutrional_values`;
+DROP TABLE IF EXISTS `nutritional_values`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `nutrional_values` (
+CREATE TABLE `nutritional_values` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `food_id` int(11) NOT NULL,
   `kilocalories` int(10) unsigned NOT NULL DEFAULT 0,
-  `proteins` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `carbohydrates` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `fat` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `fiber` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `calcium` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `iron` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `zinc` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `vitamin_a` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `vitamin_b` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `vitamin_b1` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `vitamin_b2` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `vitamin_b3` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `vitamin_b6` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `vitamin_b12` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `vitamin_c` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `vitamin_d` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `vitamin_e` decimal(10,0) unsigned NOT NULL DEFAULT 0,
-  `vitamin_k` decimal(10,0) unsigned NOT NULL DEFAULT 0,
+  `proteins` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `carbohydrates` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `fat` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `fiber` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `calcium` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `iron` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `zinc` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `vitamin_a` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `vitamin_b` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `vitamin_b1` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `vitamin_b2` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `vitamin_b3` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `vitamin_b6` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `vitamin_b12` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `vitamin_c` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `vitamin_d` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `vitamin_e` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
+  `vitamin_k` decimal(10,3) unsigned NOT NULL DEFAULT 0.000,
   PRIMARY KEY (`id`),
   KEY `food_id_idx` (`food_id`),
-  CONSTRAINT `food_nutrional_value_id` FOREIGN KEY (`food_id`) REFERENCES `foods` (`food_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  CONSTRAINT `food_nutritional_value_id` FOREIGN KEY (`food_id`) REFERENCES `foods` (`food_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +115,7 @@ CREATE TABLE `recipes` (
   UNIQUE KEY `recipe_name` (`recipe_name`),
   KEY `dish_type_recipe_id_idx` (`dish_type`),
   CONSTRAINT `dish_type_recipe_id` FOREIGN KEY (`dish_type`) REFERENCES `dish_types` (`dish_type_id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,7 +129,7 @@ CREATE TABLE `schema_migration` (
   `version` varchar(14) NOT NULL,
   PRIMARY KEY (`version`),
   UNIQUE KEY `schema_migration_version_idx` (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,7 +146,7 @@ CREATE TABLE `steps` (
   PRIMARY KEY (`id`),
   KEY `recipe_step_id_idx` (`recipe_id`),
   CONSTRAINT `recipe_step_id` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -158,4 +158,4 @@ CREATE TABLE `steps` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-09 17:40:05
+-- Dump completed on 2023-12-09 18:48:47
