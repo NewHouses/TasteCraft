@@ -18,5 +18,5 @@ func (app *application) getRecipeByID(c *gin.Context) {
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, recipe)
+	app.sendOKWithResult(c, recipe)
 }
